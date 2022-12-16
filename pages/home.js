@@ -5,9 +5,14 @@ import GroupIcon from "@mui/icons-material/Group";
 import OndemandVideoSharpIcon from "@mui/icons-material/OndemandVideoSharp";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+import Head from "next/head";
 
 const Home = () => {
   return (
+    <>
+    <Head>
+      <title>LinkedIn Login</title>
+    </Head>
     <div className="space-y-10 relative">
       <header className="flex justify-around items-center py-4">
         <div className="relative w-36 h-10">
@@ -54,6 +59,7 @@ const Home = () => {
         </div>
       </main>
     </div>
+    </>
   );
 }
 
