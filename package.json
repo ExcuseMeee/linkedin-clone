@@ -14,9 +14,11 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.0",
     "@next-auth/mongodb-adapter": "^1.1.1",
+    "framer-motion": "^7.10.2",
     "mongodb": "^4.12.1",
     "next": "13.0.7",
     "next-auth": "^4.18.6",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
