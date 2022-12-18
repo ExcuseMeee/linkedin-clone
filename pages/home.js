@@ -8,7 +8,6 @@ import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRound
 import Head from "next/head";
 import { getProviders, signIn } from 'next-auth/react'
 
-
 export async function getServerSideProps(context) {
   
   //object containing the various providers 

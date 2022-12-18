@@ -11,7 +11,7 @@ const HeaderLink = ({Icon, text, avatar, feed, active, hidden}) => {
       } ${active && "!text-black dark:!text-white"} `}
     >
       {/* if the icon is a avatar, then use specifiec styling, otherwise normal */}
-      {avatar ? <Icon classname="!h-7 !w-7 lg:!-mb-1 " /> : <Icon />}
+      {avatar ? <Icon className="!h-7 !w-7 lg:!-mb-1 " /> : <Icon />}
 
       <h4
         className={`text-sm ${
