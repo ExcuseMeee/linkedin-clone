@@ -1,29 +1,35 @@
 import { Avatar } from '@mui/material'
 import Image from 'next/image'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined'
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 const Sidebar = () => {
+
+  const {data: session} = useSession()
+
+  console.log(session);
+
   
   return (
     <div className="space-y-2 min-w-max max-w-lg">
       {/* Top */}
       <div className="bg-white dark:bg-[#1D2226] overflow-hidden relative flex flex-col rounded-lg items-center text-center border-gray-300 dark:border-none">
         <div className="relative w-full h-14">
-          <Image src="/linkedin-sidebar-default.png" fill priority />
+          <Image src="/linkedin-sidebar-default.png" fill priority alt='sidebar default'/>
         </div>
         <Avatar
           onClick={signOut}
-          // src={session?.user?.image}
+          src={ session?.user?.image }
           className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"
+          imgProps={{ referrerPolicy: "no-referrer" }}
         />
         <div className="mt-5 py-4 space-x-0.5">
           <h4 className="hover:underline decoration-purple-700 underline-offset-2 cursor-pointer">
-            NAME nAME 
+            {session.user.name} 
           </h4>
           <p className="text-black dark:text-white/75 text-sm">
-            email@email.com
+            {session.user.email}
           </p>
         </div>
 
