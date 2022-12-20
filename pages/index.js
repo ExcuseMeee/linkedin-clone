@@ -1,13 +1,20 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
+import Feed from '../components/Feed'
 import { getSession, useSession} from 'next-auth/react'
 import { useRouter } from 'next/router'
+import {AnimatePresence} from 'framer-motion'
+import Modal from '../components/Modal'
+import { useRecoilState } from 'recoil'
+import { modalState, modalTypeState } from '../atoms/modalAtom'
 
 export default function Home() {
 
   const router = useRouter();
 
+  const [modalOpen, setModalOpen] = useRecoilState(modalState)
+  const [modalType, setModalType] = useRecoilState(modalTypeState);
   const { status } = useSession({
     required: true,
     onUnauthenticated() {
@@ -21,18 +28,22 @@ export default function Home() {
       <Head>
         <title>Feed | LinkedIn</title>
       </Head>
-
       <Header />
 
       <main className='flex justify-center gap-x-5 px-4 sm:px-12'>
 
         <div className='flex flex-col md:flex-row gap-5'>
           <Sidebar />
-          {/* Feed */}
+          <Feed />
 
         </div>
 
         {/* Widgets */}
+        <AnimatePresence>
+          {modalOpen && (
+            <Modal handleClose={() => setModalOpen(false)} type={modalType} />
+          )}
+        </AnimatePresence>
 
       </main>
 

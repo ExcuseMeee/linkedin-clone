@@ -8,9 +8,6 @@ const Sidebar = () => {
 
   const {data: session} = useSession()
 
-  console.log(session);
-
-  
   return (
     <div className="space-y-2 min-w-max max-w-lg">
       {/* Top */}
