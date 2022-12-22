@@ -9,8 +9,6 @@ const Feed = ({ posts }) => {
   const [handlePost, setHandlePost] = useRecoilState(handlePostState);
   const [useSSRPosts, setUseSSRPosts] = useRecoilState(useSSRPostsState);
 
-  console.log(posts);
-
   useEffect(() => {
     async function fetchPosts() {
       const response = await fetch("/api/posts", {

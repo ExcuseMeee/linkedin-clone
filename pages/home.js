@@ -32,7 +32,7 @@ const Home = ({providers}) => {
           <Image src={"/LinkedIn_Logo.svg"} fill style={"contain"} alt={"LinkedIn Logo"} />
         </div>
         <div className="flex items-center sm:divide-x divide-gray-300">
-          <div className="hidden sm:flex space-x-8 pr-4 ">
+          <div className="hidden sm:flex space-x-8 pr-4">
             <HeaderLink Icon={ExploreIcon} text="Discover" />
             <HeaderLink Icon={GroupIcon} text="People" />
             <HeaderLink Icon={OndemandVideoSharpIcon} text="Learning" />

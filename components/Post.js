@@ -18,6 +18,7 @@ const Post = ({ post, modalPost }) => {
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const [modalType, setModalType] = useRecoilState(modalTypeState);
   const [postState, setPostState] = useRecoilState(getPostState);
+  const [handlePost, setHandlePost] = useRecoilState(handlePostState);
 
   const [showInput, setShowInput] = useState(false);
   const [liked, setLiked] = useState(false);
@@ -30,8 +31,16 @@ const Post = ({ post, modalPost }) => {
       : string;
   }
 
-  function deletePost() {
+  async function deletePost() {
     console.log("delete post clicked");
+    const response = await fetch(`/api/posts/${post._id}`,{
+      method: "DELETE",
+      headers: {"Content-Type": "application/json" }
+    })
+
+    setHandlePost(true)
+    setModalOpen(false)
+
   }
 
   return (
@@ -50,6 +59,7 @@ const Post = ({ post, modalPost }) => {
           <TimeAgo
             date={post.createdAt}
             className="text-xs dark:text-white/75 opacity-80"
+            suppressHydrationWarning
           />
         </div>
 
