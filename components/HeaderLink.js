@@ -1,5 +1,8 @@
+import { useSession } from "next-auth/react";
 
-const HeaderLink = ({Icon, text, avatar, feed, active, hidden}) => {
+const HeaderLink = ({ Icon, text, avatar, feed, active, hidden }) => {
+  const { data: session } = useSession();
+
   return (
     <div
       className={`${
@@ -11,7 +14,11 @@ const HeaderLink = ({Icon, text, avatar, feed, active, hidden}) => {
       } ${active && "!text-black dark:!text-white"} `}
     >
       {/* if the icon is a avatar, then use specifiec styling, otherwise normal */}
-      {avatar ? <Icon className="!h-7 !w-7 lg:!-mb-1 " /> : <Icon />}
+      {avatar ? (
+        <Icon className="!h-7 !w-7 lg:!-mb-1 " src={session?.user?.image} />
+      ) : (
+        <Icon />
+      )}
 
       <h4
         className={`text-sm ${
@@ -26,6 +33,6 @@ const HeaderLink = ({Icon, text, avatar, feed, active, hidden}) => {
       )}
     </div>
   );
-}
+};
 
-export default HeaderLink
+export default HeaderLink;

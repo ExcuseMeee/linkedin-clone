@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { handlePostState, useSSRPostsState } from "../atoms/postAtom";
 import Input from "./Input";
+import Post from "./Post";
 
-const Feed = ({posts}) => {
+const Feed = ({ posts }) => {
   const [realtimePosts, setRealtimePosts] = useState([]);
   const [handlePost, setHandlePost] = useRecoilState(handlePostState);
   const [useSSRPosts, setUseSSRPosts] = useRecoilState(useSSRPostsState);
@@ -24,7 +25,7 @@ const Feed = ({posts}) => {
     }
 
     fetchPosts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handlePost]);
 
   return (
@@ -32,6 +33,9 @@ const Feed = ({posts}) => {
       <Input />
 
       {/* Posts */}
+      {!useSSRPosts
+        ? realtimePosts.map((post) => <Post key={post._id} post={post} /> )
+        : posts.map((post) => <Post key={post._id} post={post} />)}
     </div>
   );
 };
